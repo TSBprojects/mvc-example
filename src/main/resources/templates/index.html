@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org/"
+      layout:decorate="~{layouts/layout}">
+<body>
+    <div layout:fragment="content">
+
+        <div class="jumbotron">
+            <h1>Welcome to the Quoter application!</h1>
+            <p th:text="${message}"></p>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org/"
+      layout:decorate="~{layouts/layout}">
+<body>
+<div layout:fragment="content">
+    <div class="page-header">
+        <h3>New Author</h3>
+    </div>
+    <form th:action="@{/author/add}" th:object="${authorForm}" method="POST">
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="form-group">
+            <label for="name">Author Name</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}" />
+            <!--<ul>-->
+                <!--<li th:each="err : ${#fields.errors('name')}" th:text="${err}"></li>-->
+            <!--</ul>-->
+            <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="invalid-feedback">error</label>
+        </div>
+        <button type="submit" class="btn btn-default">Save</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org/"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>404</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <H1>Resource not found!</H1>
+        <p>Message: <span th:text="${message}"></span></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+spring:
+  application.name: mvc-example
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  messages:
+    basename: messages
+  jpa:
+    hibernate:
+      ddl-auto: update
+logging:
+  file: logs/mvc_dev.log
+  level:
+    org.springframework.web: DEBUG
+    ru.javazen.telegram.bot: DEBUG
+    org.hibernate: DEBUG

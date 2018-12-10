@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org/"
+      layout:decorate="~{layouts/layout}">
+<body>
+<div layout:fragment="content">
+    <div class="page-header">
+        <h3>New Theme</h3>
+    </div>
+    <form th:action="@{/theme/add}" th:object="${themeForm}" method="POST">
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="form-group">
+
+            <label for="name">Theme Name</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}" />
+            <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="invalid-feedback">error</label>
+
+            <label for="description">Theme description</label>
+            <input type="text" class="form-control" id="description" th:field="*{description}" />
+            <label th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="invalid-feedback">error</label>
+
+            <label for="author">Select author</label>
+            <select th:field="*{authorId}" size="1" id="author">
+                <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.name}"></option>
+            </select>
+
+        </div>
+        <button type="submit" class="btn btn-default">Save</button>
+    </form>
+</div>
+</body>
+</html>
