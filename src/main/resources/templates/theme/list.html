@@ -13,11 +13,15 @@
             <thead>
             <tr>
                 <th>Name</th>
+                <th>Description</th>
+                <th>id</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="theme : ${themes}">
                 <td><a th:href="@{/theme/{id}/(id=${theme.id})}" th:text="${theme.name}"/></td>
+                <td th:text="${theme.description}"></td>
+                <td th:text="${theme.id}"></td>
             </tr>
             </tbody>
         </table>

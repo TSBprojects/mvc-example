@@ -3,6 +3,7 @@ package ru.neoflex.mvc.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.convert.ConversionService;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.neoflex.mvc.domain.Theme;
 import ru.neoflex.mvc.exception.AuthorNotFoundException;
@@ -80,5 +81,21 @@ public class ThemeServiceImpl implements ThemeService {
             throw new ThemeNotFoundException(id);
         }
         themeRepository.deleteById(id);
+    }
+
+    @Override
+    public List<ThemeModel> getAllSortByTitle(){
+        return themeRepository.findAll(new Sort(Sort.Direction.DESC,"name"))
+                .stream()
+                .map((a) -> conversionService.convert(a, ThemeModel.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ThemeModel> getAllBetween(int from, int to) {
+        return themeRepository.findByIdBetween(from, to)
+                .stream()
+                .map((a) -> conversionService.convert(a, ThemeModel.class))
+                .collect(Collectors.toList());
     }
 }

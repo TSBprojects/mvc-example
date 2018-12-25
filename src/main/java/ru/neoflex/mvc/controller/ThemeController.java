@@ -40,7 +40,7 @@ public class ThemeController {
 
     @GetMapping
     public String list(Model model) {
-        model.addAttribute("themes", themeService.getAll());
+        model.addAttribute("themes", themeService.getAllBetween(3,5));
         return HTML_FOLDER + "list";
     }
 
@@ -52,7 +52,6 @@ public class ThemeController {
         model.addAttribute("theme", themeService.get(id));
         return HTML_FOLDER + "view";
     }
-
 
     @GetMapping("/add")
     public String add(Model model) {
